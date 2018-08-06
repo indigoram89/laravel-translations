@@ -1,0 +1,34 @@
+{
+    "name": "indigoram89/laravel-translations",
+    "description": "Translations for Laravel 5",
+    "keywords": [
+        "indigoram89", "laravel", "translations"
+    ],
+    "homepage": "https://github.com/indigoram89/laravel-translations",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Max Orlov",
+            "email": "maksimorlov.personal@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Indigoram89\\Laravel\\Translations\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Indigoram89\\Laravel\\Translations\\TranslationsServiceProvider"
+            ],
+            "aliases": {
+                "Translations": "Indigoram89\\Laravel\\Translations\\Facades\\Translations"
+            }
+        }
+    }
+}
