@@ -39,11 +39,11 @@ trait CanSearch
 	{
 		$keys = [];
 	
-		$pattern = '/((__|trans)\([\'"])(.+?)([\'"]\))/';
+		$pattern = '/(__\([\'"])(.+?)([\'"]\))/';
 
 		if (preg_match_all($pattern, $content, $matches)) {
             foreach ($matches[0] as $match) {
-            	$keys[] = preg_replace($pattern, '$3', $match);
+            	$keys[] = preg_replace($pattern, '$2', $match);
             }
         }
 
