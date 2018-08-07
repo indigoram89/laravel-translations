@@ -45,7 +45,7 @@ trait CanSave
 
 		foreach ($files as $locale => $groups) {
 			foreach ($groups as $file => $content) {
-				
+
 				$content = var_export($content, true);
 
 				$this->makeDirectory(base_path("resources/lang/{$locale}"));
@@ -58,9 +58,14 @@ trait CanSave
 		}
 	}
 
+	protected function isKey(string $key)
+	{
+		return preg_match('/^[a-z]+\./', $key);
+	}
+
 	protected function parseKey(string $key)
 	{
-		if (preg_match('/[a-z0-9_-]+\./', $key)) {
+		if ($this->isKey($key)) {
 			return $this->translator->parseKey($key);
 		}
 	}
