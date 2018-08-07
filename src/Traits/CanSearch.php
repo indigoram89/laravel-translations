@@ -39,15 +39,18 @@ trait CanSearch
 	{
 		$keys = [];
 
-		// __('foo.bar')
-		// __('foo.bar', [])
-		$pattern = "/__\('(.+?)['\]]\)/";
+		$patterns = [
+			"/__\('(.+?)'[,)]/",
+			'/__\("(.+?)"[,)]/',
+		];
 
-		if (preg_match_all($pattern, $content, $matches)) {
-            foreach ($matches[0] as $match) {
-            	$keys[] = preg_replace($pattern, '$1', $match);
-            }
-        }
+		foreach ($patterns as $pattern) {
+			if (preg_match_all($pattern, $content, $matches)) {
+	            foreach ($matches[0] as $match) {
+	            	$keys[] = preg_replace($pattern, '$1', $match);
+	            }
+	        }
+		}
 
         return $keys;
 	}
