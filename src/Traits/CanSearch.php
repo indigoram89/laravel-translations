@@ -28,7 +28,7 @@ trait CanSearch
         	$content = $this->getFile($file);
 
         	foreach ($this->searchKeys($content) as $key) {
-        		$texts[$key] = [$locale => $this->parseValue($key, __($key))];
+        		$texts[$key] = [$locale => $this->compareValue($key, __($key))];
         	}
         }
 
@@ -53,5 +53,12 @@ trait CanSearch
 		}
 
         return $keys;
+	}
+
+	protected function compareValue(string $key, string $value)
+	{
+		if ($value === $key) return null;
+
+		return $value;
 	}
 }

@@ -21,8 +21,8 @@ trait CanSave
 
 		foreach ($translations as $key => $values) {
 			foreach ($values as $locale => $value) {
-				$files[$locale][$key] = $this->parseValue($key, $value)
-					?: $this->parseValue($key, $translations[$key][$default]);
+				$files[$locale][$key] = $this->clearValue($key, $value)
+					?: $this->clearValue($key, $translations[$key][$default]);
 			}
 		}
 
@@ -41,7 +41,7 @@ trait CanSave
 		foreach ($translations as $key => $values) {
 			if (list($namespace, $group, $item) = $this->parseKey($key)) {
 				foreach ($values as $locale => $value) {
-					$files[$locale][$group][$item] = $this->parseValue($key, $value);
+					$files[$locale][$group][$item] = $this->clearValue($key, $value);
 				}
 			}
 		}
@@ -73,11 +73,9 @@ trait CanSave
 		}
 	}
 
-	protected function parseValue(string $key, string $value = null)
+	protected function clearValue(string $key, string $value = null)
 	{
 		if ($value === '') return null;
-
-		if ($value === $key) return null;
 
 		return $value;
 	}
