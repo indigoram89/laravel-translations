@@ -8,7 +8,7 @@ trait CanSave
 	{
 		$this->saveJSON($translations);
 		
-		$this->savePHP($translations);
+		// $this->savePHP($translations);
 
 		return count($translations);
 	}
@@ -17,9 +17,12 @@ trait CanSave
 	{
 		$files = [];
 
+		$default = $this->getLocale();
+
 		foreach ($translations as $key => $values) {
 			foreach ($values as $locale => $value) {
-				$files[$locale][$key] = $this->parseValue($key, $value);
+				$files[$locale][$key] = $this->parseValue($key, $value)
+					?: $this->parseValue($key, $translations[$key][$default]);
 			}
 		}
 
