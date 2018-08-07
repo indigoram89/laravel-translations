@@ -38,12 +38,14 @@ trait CanSearch
 	protected function searchKeys(string $content) : array
 	{
 		$keys = [];
-	
-		$pattern = '/(__\([\'"])(.+?)([\'"]\))/';
+
+		// __('foo.bar')
+		// __('foo.bar', [])
+		$pattern = "/__\('(.+?)['\]]\)/";
 
 		if (preg_match_all($pattern, $content, $matches)) {
             foreach ($matches[0] as $match) {
-            	$keys[] = preg_replace($pattern, '$2', $match);
+            	$keys[] = preg_replace($pattern, '$1', $match);
             }
         }
 
