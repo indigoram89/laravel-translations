@@ -1,7 +1,7 @@
 <?php
 
 return [
-	'driver' => env('TRANSLATIONS_DRIRVER', 'lokalise'),
+	'driver' => env('TRANSLATIONS_DRIVER', 'lokalise'),
 
 	'lokalise' => [
 		'driver' => 'lokalise',
