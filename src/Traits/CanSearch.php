@@ -4,16 +4,20 @@ namespace Indigoram89\Laravel\Translations\Traits;
 
 trait CanSearch
 {
-	public function search() : array
+	public function search(array $params = []) : array
 	{
 		$locale = $this->getLocale();
 		
 		$translations = [];
 
-		foreach ($this->getConfig('search') as $path) {
+		if (count($params) > 0) {
+			return $this->searchTexts($params['path'], $locale);
+		}
+
+		foreach ((array) $this->getConfig('search') as $params) {
 			$translations = array_merge(
 				$translations,
-				$this->searchTexts($path, $locale)
+				$this->searchTexts($params['path'], $locale)
 			);
 		}
 

@@ -10,8 +10,8 @@ return [
 	],
 
 	'search' => [
-		'resources/views',
-		'routes',
-		'app',
+		['path' => 'resources/views'],
+		['path' => 'routes'],
+		['path' => 'app'],
 	],
 ];
