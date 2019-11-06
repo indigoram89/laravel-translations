@@ -2,6 +2,7 @@
 
 namespace Indigoram89\Laravel\Translations;
 
+use Illuminate\Support\Arr;
 use InvalidArgumentException;
 use Indigoram89\Laravel\Translations\Drivers\Lokalise;
 use Indigoram89\Laravel\Translations\Contracts\Driver as DriverContract;
@@ -58,6 +59,6 @@ class Drivers implements DriversContract
 
     protected function getConfig(string $key)
     {
-        return array_get($this->config, $key);
+        return Arr::get($this->config, $key);
     }
 }

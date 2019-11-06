@@ -4,6 +4,7 @@ namespace Indigoram89\Laravel\Translations\Drivers;
 
 use Exception;
 use GuzzleHttp\Client;
+use Illuminate\Support\Arr;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 use Indigoram89\Laravel\Translations\Contracts\Driver;
@@ -112,6 +113,6 @@ class Lokalise implements Driver
 
 	public function getConfig(string $key)
 	{
-		return array_get($this->config, $key);
+		return Arr::get($this->config, $key);
 	}
 }

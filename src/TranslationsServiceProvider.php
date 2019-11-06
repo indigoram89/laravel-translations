@@ -30,8 +30,6 @@ class TranslationsServiceProvider extends ServiceProvider
         ]);
 
         $this->commands(PushCommand::class, PullCommand::class);
-        // if ($this->app->runningInConsole()) {
-        // }
     }
 
     /**

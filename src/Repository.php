@@ -2,6 +2,7 @@
 
 namespace Indigoram89\Laravel\Translations;
 
+use Illuminate\Support\Arr;
 use Indigoram89\Laravel\Translations\Traits\CanSave;
 use Indigoram89\Laravel\Translations\Traits\CanFiles;
 use Indigoram89\Laravel\Translations\Traits\CanSearch;
@@ -32,7 +33,7 @@ class Repository implements RepositoryContract
 
 	protected function getConfig(string $key)
 	{
-		return array_get($this->config, $key);
+		return Arr::get($this->config, $key);
 	}
 
 	protected function getLocale()
